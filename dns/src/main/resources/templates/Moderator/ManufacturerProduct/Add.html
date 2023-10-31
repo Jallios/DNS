@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <div th:insert="~{/Moderator/blocks/header}"/>
+</head>
+<body>
+<main class="container-md">
+    <h1>Добавление</h1>
+    <form th:method="POST" th:action="@{/Moderator/ManufacturerProduct/Add}" th:object="${manufacturerProduct}">
+        <input placeholder="Производитель:" type="text" class="form-control p-2" th:field="*{nameManufacturerProduct}"/>
+        <span th:if="${#fields.hasErrors('nameManufacturerProduct')}" th:errors="*{nameManufacturerProduct}" style="color: red"></span>
+        <br/>
+        <button type="submit"  class="operator btn btn-info">Добавить</button>
+    </form>
+</main>
+</body>
+</html>

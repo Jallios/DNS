@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <div th:insert="~{Moderator/blocks/header}"/>
+</head>
+<body>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Номер</th>
+        <th>Категория</th>
+        <th>Действие</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="object : ${objects}">
+        <td th:text="${object.idProductCategory}"></td>
+        <td th:text="${object.nameProductCategory}"></td>
+        <td>
+            <a class="btn btn-light" th:href="@{/Moderator/ProductCategory/Index/{id}(id=${object.idProductCategory})}">🗑️</a>
+            |
+            <a class="btn btn-light" th:href="@{/Moderator/ProductCategory/Update/{id}(id=${object.idProductCategory})}">🔄</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a class="operator btn btn-info" href="/Moderator/ProductCategory/Add">Создать</a>
+</body>
+</html>

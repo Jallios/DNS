@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <div th:insert="~{/Moderator/blocks/header}"/>
+</head>
+<body>
+<main class="container-md">
+    <h1>Редактирование</h1>
+    <form th:method="POST" th:action="@{/Moderator/Schedule/Update/{id}(id=${object.getIdTimetable()})}" th:object="${object}">
+        <input placeholder="График работы:" type="text" class="form-control p-2" th:field="*{schedule}"/>
+        <span th:if="${#fields.hasErrors('schedule')}" th:errors="*{schedule}" style="color: red"></span>
+        <br/>
+        <button type="submit"  class="operator btn btn-info">Сохранить</button>
+    </form>
+</main>
+</body>
+</html>

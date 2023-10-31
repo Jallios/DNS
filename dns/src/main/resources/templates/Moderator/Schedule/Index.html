@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <div th:insert="~{/Moderator/blocks/header}"/>
+</head>
+<body>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Номер</th>
+        <th>Время работы</th>
+        <th>Действие</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="object : ${objects}">
+        <td th:text="${object.idTimetable}"></td>
+        <td th:text="${object.schedule}"></td>
+        <td>
+            <a class="btn btn-light" th:href="@{/Moderator/Schedule/Index/{id}(id=${object.idTimetable})}">🗑️</a>
+            |
+            <a class="btn btn-light" th:href="@{/Moderator/Schedule/Update/{id}(id=${object.idTimetable})}">🔄</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a class="operator btn btn-info" href="/Moderator/Schedule/Add">Создать</a>
+</body>
+</html>

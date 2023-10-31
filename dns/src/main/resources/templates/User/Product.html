@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <div th:insert="~{/User/blocks/header}"/>
+</head>
+<body>
+
+<main class="container-md" th:each="object : ${objectProduct}">
+    <form th:method="POST" th:action="@{/User/Product/{id}(id=${object.idProduct})}">
+    <h1 th:text="${object.name}"/>
+    <div  class="form-group">
+        <br/>
+        <h4 th:text="${object.specifications}"/>
+        <br/>
+        <h4 th:text="${object.description}"/>
+        <br/>
+        <h4 th:text="${object.price}"/>
+        <br/>
+        <h4 th:text="${object.manufacturerProduct.nameManufacturerProduct}"/>
+        <br/>
+        <h4 th:text="${object.productCategory.nameProductCategory}"/>
+        <br/>
+        <button type="submit"  class="operator btn btn-info">Добавить в заказ</button>
+    </div>
+    </form>
+</main>
+</body>
+</html>

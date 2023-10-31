@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <div th:insert="~{/User/blocks/header}"/>
+</head>
+<body>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Название</th>
+        <th>Цена</th>
+        <th>Действие</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="object : ${objectsPersonShop}">
+        <td th:text="${object.product.name}"></td>
+        <td th:text="${object.product.price}"></td>
+        <td>
+            <a class="btn btn-light" th:href="@{/User/Order/{id}(id=${object.idPersonShop})}">🗑️</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

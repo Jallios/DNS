@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <div th:insert="~{/Moderator/blocks/header}"/>
+</head>
+<body>
+<main class="container-md">
+    <h1>Добавление</h1>
+    <form th:method="POST" th:action="@{/Moderator/Schedule/Add}" th:object="${schedule}">
+        <input placeholder="График работы:" type="text" class="form-control p-2" th:field="*{schedule}"/>
+        <span th:if="${#fields.hasErrors('schedule')}" th:errors="*{schedule}" style="color: red"></span>
+        <br/>
+        <button type="submit"  class="operator btn btn-info">Добавить</button>
+    </form>
+</main>
+</body>
+</html>

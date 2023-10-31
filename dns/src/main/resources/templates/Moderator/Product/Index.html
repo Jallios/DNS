@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <div th:insert="~{Moderator/blocks/header}"/>
+</head>
+<body>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Номер</th>
+        <th>Название</th>
+        <th>Характеристики</th>
+        <th>Описание</th>
+        <th>Цена</th>
+        <th>Производитель</th>
+        <th>Категория</th>
+        <th>Действие</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="object : ${objects}">
+        <td th:text="${object.idProduct}"></td>
+        <td th:text="${object.name}"></td>
+        <td th:text="${object.specifications}"></td>
+        <td th:text="${object.description}"></td>
+        <td th:text="${object.price}"></td>
+        <td th:text="${object.manufacturerProduct.nameManufacturerProduct}"></td>
+        <td th:text="${object.productCategory.nameProductCategory}"></td>
+        <td>
+            <a class="btn btn-light" th:href="@{/Moderator/Product/Index/{id}(id=${object.idProduct})}">🗑️</a>
+            |
+            <a class="btn btn-light" th:href="@{/Moderator/Product/Update/{id}(id=${object.idProduct})}">🔄</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a class="operator btn btn-info" href="/Moderator/Product/Add">Создать</a>
+</body>
+</html>

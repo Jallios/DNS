@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <div th:insert="~{/User/blocks/header}"/>
+</head>
+<body>
+<div>
+    <form th:method="POST" th:action="@{/User/Index}">
+        <div class="input-group">
+            <div class="form-outline">
+                <input placeholder="Имя:" class="form-control p-2" type="text" name="name"/>
+            </div>
+            <div class="form-outline">
+                <select class="form-select h-100" name="address">
+                    <div th:each="object : ${objectsShop}">
+                        <option th:text="${object.address}" th:value="${object.address}"></option>
+                    </div>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">
+                🔍
+            </button>
+        </div>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Номер</th>
+        <th>Название</th>
+        <th>Цена</th>
+        <th>Действие</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="object : ${objectsProduct}">
+        <td th:text="${object.idProduct}"></td>
+        <td th:text="${object.name}"></td>
+        <td th:text="${object.price}"></td>
+        <td>
+            <a class="btn btn-light" th:href="@{/User/Product/{id}(id=${object.idProduct})}">📄</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
